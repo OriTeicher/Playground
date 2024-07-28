@@ -1,0 +1,19 @@
+2024-07-28T21:41:47.304Z [info]: Data: test data 
+ saved to data/case_1-saved-data.txt
+2024-07-28T21:41:47.306Z [info]: Fetched data: "test data"
+2024-07-28T21:41:47.309Z [info]: Data: [object Object],[object Object],[object Object] 
+ saved to data/case_2-saved-data.txt
+2024-07-28T21:41:47.311Z [info]: Fetched data: [{"id":1,"value":"item 1"},{"id":2,"value":"item 2"},{"id":3,"value":"item 3"}]
+2024-07-28T21:41:47.317Z [info]: Data: [object Object],[object Object],[object Object],[object Object],[object Object] 
+ saved to data/case_3-saved-data.txt
+2024-07-28T21:41:47.318Z [info]: item#0: [object Object] 
+
+2024-07-28T21:41:47.318Z [info]: item#1: [object Object] 
+
+2024-07-28T21:41:47.318Z [info]: item#2: [object Object] 
+
+2024-07-28T21:41:47.319Z [info]: item#3: [object Object] 
+
+2024-07-28T21:41:47.319Z [info]: item#4: [object Object] 
+
+2024-07-28T21:41:47.319Z [info]: Fetched data: [{"id":1,"value":"item 1"},{"id":2,"value":"item 2"},{"id":3,"value":"item 3"},{"id":4,"value":"item 4"},{"id":5,"value":"item 5"}]
