@@ -1,20 +1,33 @@
+import axios from "axios"
 import { fetchData, saveFetchedData } from "../services/fetch-data.service"
 import logger from "../services/logger.service"
 
-const API_URL = "https://jsonplaceholder.typicode.com/users"
+jest.mock("axios")
+const mockedAxios = axios as jest.Mocked<typeof axios>
 
+// CASES TO TEST
 const TEST_CASE_1 = "fetchData should return data from API"
 const TEST_CASE_2 = "fetchData should be an array of at least 3 objects"
 const TEST_CASE_3 = "fetchData should be an array of exactly 5 objects"
 
 test(TEST_CASE_1, async () => {
-  const data = await fetchData(API_URL)
-  expect(data).toBeDefined()
+  const mockData = { data: "test data" }
+  mockedAxios.get.mockResolvedValue(mockData)
+  const data = await saveFetchedData(1)
+  expect(data).toEqual(mockData.data)
   logger.info(`Fetched data: ${JSON.stringify(data)} \n`)
 })
 
 test(TEST_CASE_2, async () => {
-  const data = await saveFetchedData(2, API_URL)
+  const mockData = {
+    data: [
+      { id: 1, value: "item 1" },
+      { id: 2, value: "item 2" },
+      { id: 3, value: "item 3" },
+    ],
+  }
+  mockedAxios.get.mockResolvedValue(mockData)
+  const data = await saveFetchedData(2)
   logger.info(`Fetched data from CASE_2 ${JSON.stringify(data)}`)
   expect(Array.isArray(data)).toBe(true)
   expect(data.length).toBeGreaterThanOrEqual(3)
@@ -22,6 +35,7 @@ test(TEST_CASE_2, async () => {
     expect(typeof item).toBe("object")
     expect(item).not.toBeNull()
   })
+
   logger.info(
     `Fetched data: ${data.forEach((item) =>
       logger.info(`${JSON.stringify(item)}`)
@@ -30,12 +44,22 @@ test(TEST_CASE_2, async () => {
 })
 
 test(TEST_CASE_3, async () => {
-  const data = await saveFetchedData(3, API_URL)
+  const mockData = {
+    data: [
+      { id: 1, value: "item 1" },
+      { id: 2, value: "item 2" },
+      { id: 3, value: "item 3" },
+      { id: 4, value: "item 4" },
+      { id: 5, value: "item 5" },
+    ],
+  }
+  mockedAxios.get.mockResolvedValue(mockData)
+  const data = await saveFetchedData(3)
   expect(Array.isArray(data)).toBe(true)
-  expect(data.length).toBeGreaterThanOrEqual(5)
-  data.forEach((item: any) => {
+  expect(data.length).toEqual(mockData.data.length)
+  data.forEach((item, idx) => {
+    logger.info(`from CASE_3 item#${idx}: ${JSON.stringify(item)}`)
     expect(typeof item).toBe("object")
     expect(item).not.toBeNull()
   })
-  logger.info(`Fetched data from CASE_3: ${JSON.stringify(data)}`)
 })
