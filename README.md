@@ -3,7 +3,7 @@
 ## Fetch Data Service
 ### Overview
 
-- `fetch-data.service` is a TypeScript service that provides functionalities to  fetch data from an API and save it to a file
+- `fetch-data.service` is a TypeScript service that provides functionalities to fetch data from an API and save it.
 - It uses `axios` for making HTTP requests and `fs` for file operations. 
 - The service also includes logging via a custom logger service.
 
