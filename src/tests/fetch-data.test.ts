@@ -15,7 +15,7 @@ test(TEST_CASE_1, async () => {
   mockedAxios.get.mockResolvedValue(mockData)
   const data = await saveFetchedData(1)
   expect(data).toEqual("test data")
-  logger.info(`Fetched data: ${JSON.stringify(data)}`)
+  logger.info(`Fetched data: ${JSON.stringify(data)} \n`)
 })
 
 test(TEST_CASE_2, async () => {
@@ -35,7 +35,11 @@ test(TEST_CASE_2, async () => {
     expect(item).not.toBeNull()
   })
 
-  logger.info(`Fetched data: ${JSON.stringify(data)}`)
+  logger.info(
+    `Fetched data: ${data.forEach((item) =>
+      logger.info(`${JSON.stringify(item)}`)
+    )} \n `
+  )
 })
 
 test(TEST_CASE_3, async () => {
@@ -53,9 +57,8 @@ test(TEST_CASE_3, async () => {
   expect(Array.isArray(data)).toBe(true)
   expect(data.length).toEqual(mockData.data.length)
   data.forEach((item, idx) => {
-    logger.info(`item#${idx}: ${item} \n`)
+    logger.info(`item#${idx}: ${JSON.stringify(item)}`)
     expect(typeof item).toBe("object")
     expect(item).not.toBeNull()
   })
-  logger.info(`Fetched data: ${JSON.stringify(data)}`)
 })

@@ -30,7 +30,7 @@ export async function saveFetchedData(
     }
     const data = await fetchData(url)
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2))
-    logger.info(`Data: ${data} \n saved to ${filePath}`)
+    logger.info(`Data: ${JSON.stringify(data)} saved to ${filePath} \n`)
     return data
   } catch (err) {
     console.error("Error saving data:", err.message)

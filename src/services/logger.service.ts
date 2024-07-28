@@ -8,7 +8,7 @@ const logger = createLogger({
       return `${timestamp} [${level}]: ${message}`
     })
   ),
-  transports: [new transports.File({ filename: "test-results.log" })],
+  transports: [new transports.File({ filename: "fetch-data.log" })],
 })
 
 export default logger
